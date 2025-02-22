@@ -133,7 +133,7 @@ Once the Jenkins pipeline runs successfully and pushes the Docker image, you can
 docker run -d -p 9090:8080 your-dockerhub-username/registration-app
 ```
 
-Access the application at: `http://<EC2-PUBLIC-IP>:8080`
+Access the application at: `http://<EC2-PUBLIC-IP>:9090/webapp`
 
 ## Future Enhancements
 
