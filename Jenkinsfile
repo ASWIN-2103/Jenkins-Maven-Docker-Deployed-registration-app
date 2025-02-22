@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         DOCKER_HUB_USER = 'aswin21030'  
-        DOCKER_HUB_PASS = credentials('2546eaff-3c64-4c77-91ad-07b381e67189') 
         IMAGE_NAME = 'aswin21030/jenkins-myapp'  
         IMAGE_TAG = 'latest'
     }
@@ -11,7 +10,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                 git branch: 'main', url: 'https://github.com/ASWIN-2103/registration-app.git'
+                git branch: 'main', url: 'https://github.com/ASWIN-2103/registration-app.git'
             }
         }
 
@@ -29,7 +28,9 @@ pipeline {
 
         stage('Login to Docker Hub') {
             steps {
-                sh 'echo $DOCKER_HUB_PASS | docker login -u $DOCKER_HUB_USER --password-stdin'
+                withCredentials([string(credentialsId: '2546eaff-3c64-4c77-91ad-07b381e67189', variable: 'DOCKER_ACCESS_TOKEN')]) {
+                    sh 'echo "$DOCKER_ACCESS_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin'
+                }
             }
         }
 
@@ -40,3 +41,4 @@ pipeline {
         }
     }
 }
+
