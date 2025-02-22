@@ -28,8 +28,8 @@ pipeline {
 
         stage('Login to Docker Hub') {
             steps {
-                withCredentials([string(credentialsId: '2546eaff-3c64-4c77-91ad-07b381e67189', variable: 'DOCKER_ACCESS_TOKEN')]) {
-                    sh 'echo "$DOCKER_ACCESS_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin'
+               withCredentials([string(credentialsId: 'docker-hub-token', variable: 'DOCKER_ACCESS_TOKEN')]) {
+                  sh 'echo "$DOCKER_ACCESS_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin'
                 }
             }
         }
