@@ -2,16 +2,16 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_USER = 'aswin21030'  // Your Docker Hub username
-        DOCKER_HUB_PASS = credentials('2546eaff-3c64-4c77-91ad-07b381e67189') // Your Jenkins stored credential ID
-        IMAGE_NAME = 'aswin21030/jenkins-myapp'  // Your Docker Hub repo
+        DOCKER_HUB_USER = 'aswin21030'  
+        DOCKER_HUB_PASS = credentials('2546eaff-3c64-4c77-91ad-07b381e67189') 
+        IMAGE_NAME = 'aswin21030/jenkins-myapp'  
         IMAGE_TAG = 'latest'
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                git '' // Replace with your actual GitHub repo URL
+                git 'https://github.com/ASWIN-2103/registration-app.git'
             }
         }
 
