@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/ASWIN-2103/registration-app.git'
+                 git branch: 'main', url: 'https://github.com/ASWIN-2103/registration-app.git'
             }
         }
 
